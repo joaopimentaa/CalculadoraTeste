@@ -1,0 +1,34 @@
+<project name="Calculadora" basedir="." default="test">
+
+    <property name="src.dir"     value="src"/>
+    <property name="test.dir"    value="test"/>
+    <property name="build.dir"   value="build"/>
+    <property name="lib.dir"     value="lib"/>
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${build.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false"/>
+        <javac srcdir="${test.dir}" destdir="${build.dir}" classpathref="classpath" includeantruntime="false"/>
+    </target>
+
+    <target name="test" depends="compile">
+        <junit printsummary="on">
+            <classpath>
+                <path refid="classpath"/>
+                <pathelement path="${build.dir}"/>
+            </classpath>
+            <test fork="true" name="CalculadoraTest"/>
+        </junit>
+    </target>
+
+</project>
