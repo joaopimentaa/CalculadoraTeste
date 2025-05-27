@@ -22,7 +22,7 @@
     </target>
 
     <target name="test" depends="compile">
-        <junit printsummary="on">
+        <junit printsummary="on" showoutput="true">
             <classpath>
                 <path refid="classpath"/>
                 <pathelement path="${build.dir}"/>

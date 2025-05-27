@@ -1,2 +1,2 @@
 # CalculadoraTeste
-CI/CD
+CI
